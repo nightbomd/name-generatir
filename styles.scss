@@ -1,0 +1,16 @@
+$background-color: #0a0a0f;        // Almost black background
+$font-color: #e2eef8;              // Light blue-white for text (good contrast)
+$primary-color: #1a2847;           // Dark blue for primary elements
+
+$div-background: #1c1c28;          // Dark gray-blue for divs
+$div-accent: #2d2d3d;              // Slightly lighter for hover/secondary divs
+$border-color: #1a2847; 
+body {
+    background-color: $background-color;
+    color: $font-color;
+    font-family: Arial, sans-serif;
+}
+#form {
+    background: $primary-color;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.13);
+}
