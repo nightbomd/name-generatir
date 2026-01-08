@@ -36,34 +36,79 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="description"
+                                    id="nameInput"
                                     placeholder="Type you name"
                                 />
                             </div>
-                            <div class="mb-3 d-flex flex-column justify-content-center align-items-start">
+                            <div class="mb-3 d-flex flex-column justify-content-center align-items-start w-100">
                                 <h2 class="text-center p-3">Whats your favorite superhero?</h2>
+                                <fieldset class="mb-3 d-flex flex-wrap justify-content-center align-items-start gap-3">
                                 <label for="superhero" class="form-label"
                                     >Batman?</label
                                 >
                                 <input
+                                    class="superhero form-control w-auto"
                                     type="radio"
-                                    id="number"
-                                    name="superhero"
+                                    id="batman"
+                                    name="batman"
                                     value = "batman"
                                 />
                                 <label for="superhero" class="form-label"
-                                    >Superman</label
+                                    >Superman?</label
                                 >
                                 <input
+                                 class="superhero form-control w-auto"
                                     type="radio"
-                                    id="number"
-                                    name="superhero"
+                                    id="superman"
+                                    name="superman"
                                     value = "superman"
                                 />
+                                 <label for="superhero" class="form-label"
+                                    >Wonder Woman?</label
+                                >
+                                <input
+                                 class="superhero form-control w-auto"
+                                    type="radio"
+                                    id="wonderwoman"
+                                    name="wonderwoman"
+                                    value = "wonderwoman"
+                                />
+                                 <label for="superhero" class="form-label"
+                                    >SpiderMan?</label
+                                >
+                                <input
+                                 class="superhero form-control w-auto"
+                                    type="radio"
+                                    id="spiderman"
+                                    name="spiderman"
+                                    value = "spiderman"
+                                />
+                                </fieldset>
+                                <fieldset class="mb-3 d-flex flex-column justify-content-center align-items-start">
+                                    
+                                    <label for="color" class="form-label fs-4 fw-bold "
+                                        >Choose your favorite color</label>
+                                        <div class="col-sm-12 p-0 w-100">
+                                        <input type="color" class="form-control form-control-color w-100" id="colorPicker" name="colorPicker" value="#ff0000">
+                                        </div>
+                                </fieldset>
+                                <fieldset class="mb-3 d-flex col-6 flex-column justify-content-center align-items-start">
+                                   <label for="bravery" class="form-label fs-4 fw-bold "
+                                        >Rate your bravery</label>
+                                        <input type="range" class="form-range" min="0" max="7" id="braveryRange">
+                                    </fieldset>
+                                <fieldset class="mb-3 d-flex flex-column justify-content-center align-items-start">
+                                  <label for="personality" class="form-label fs-4 fw-bold "
+                                        >Choose your personality type</label>
+                                        <select class="form-select" id="personalitySelect">
+                                            <option value="choose">choose</option>
+                                            <option value="mean">mean</option>
+                                            <option value="nice">nice</option>
+                                        </select>
                             </div>
                             <button
                                 id="generateBtn"
-                                class="btn btn-primary mb-3"
+                                class="btn btn-primary p-3 mb-3 w-100"
                             >
                                 Generate Names
                             </button>

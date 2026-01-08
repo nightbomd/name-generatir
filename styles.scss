@@ -6,11 +6,25 @@ $div-background: #1c1c28;          // Dark gray-blue for divs
 $div-accent: #2d2d3d;              // Slightly lighter for hover/secondary divs
 $border-color: #1a2847; 
 body {
-    background-color: $background-color;
+    background: radial-gradient($background-color, #163442);
     color: $font-color;
     font-family: Arial, sans-serif;
 }
 #form {
-    background: $primary-color;
+    background: linear-gradient($primary-color, #293f6e);
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.13);
+}
+html {
+    font-size: 1.1rem!important;
+}
+.btn-primary {
+    background: linear-gradient($primary-color, #000102);
+    border: none;
+
+}
+@media screen and (max-width: 800px) {
+    div {
+        display: flex !important;
+        flex-direction: column !important;
+    }
 }
