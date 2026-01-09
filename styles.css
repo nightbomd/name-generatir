@@ -1,21 +1,40 @@
 body {
-  background: radial-gradient(#0a0a0f, #163442);
+  background: radial-gradient(circle at 50% 50%, #0a0a0f, #163442);
   color: #e2eef8;
   font-family: Arial, sans-serif;
+  height: 120vh;
+  margin: 0;
 }
 
 #form {
-  background: linear-gradient(#1a2847, #293f6e);
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.13);
+  background: linear-gradient(#142347, #293f6e);
 }
 
 html {
   font-size: 1.1rem !important;
 }
 
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 45%;
+  margin-right: 10px;
+}
+
 .btn-primary {
-  background: linear-gradient(#1a2847, #000102);
+  background: linear-gradient(145deg, #142347, #000102);
   border: none;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25), -6px -6px 12px rgba(255, 255, 255, 0.15);
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
 }
 
 @media screen and (max-width: 800px) {
@@ -23,4 +42,13 @@ html {
     display: flex !important;
     flex-direction: column !important;
   }
+}
+#result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 1.5rem;
+  text-align: center;
+  display: none;
 }/*# sourceMappingURL=styles.css.map */
