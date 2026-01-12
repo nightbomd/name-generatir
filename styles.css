@@ -1,13 +1,24 @@
 body {
   background: radial-gradient(circle at 50% 50%, #0a0a0f, #163442);
-  color: #e2eef8;
-  font-family: Arial, sans-serif;
+  color: #00D9FF;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  /* 3D effect with multiple text shadows */
+  color: #FFD700;
+  text-shadow: 3px 3px 0 #FF4500, 3px 3px 0 #DC143C, 3px 3px 0 #8B0000, 12px 12px 20px rgba(0, 0, 0, 0.5);
   height: 120vh;
   margin: 0;
 }
 
+html, * {
+  cursor: url("cursor.png.png"), auto !important;
+}
+
 #form {
-  background: linear-gradient(#142347, #293f6e);
+  background: linear-gradient(#0066CC, #293f6e);
 }
 
 html {
@@ -23,7 +34,7 @@ input[type=radio] {
 }
 
 .btn-primary {
-  background: linear-gradient(145deg, #142347, #000102);
+  background: linear-gradient(145deg, #0066CC, #042e58);
   border: none;
   border-radius: 20px;
   padding: 20px;

@@ -1,23 +1,42 @@
 $background-color: #0a0a0f; // Almost black background
-$font-color: #e2eef8; // Light blue-white for text (good contrast)
-$primary-color: #142347; // Dark blue for primary elements
+$font-color: #00D9FF; // Bright cyan for text (electric, modern hero)
+$primary-color: #0066CC; // Bold blue for primary elements
 
 $div-background: #1c1c28; // Dark gray-blue for divs
-$div-accent: #2d2d3d; // Slightly lighter for hover/secondary divs
-$border-color: #1a2847;
+$div-accent: #003D82; // Deep blue for hover/secondary divs
+$border-color: #00D9FF; // Cyan borders to match text
+
+
 
 body {
     background: radial-gradient(circle at 50% 50%, $background-color, #163442);
     color: $font-color;
-    font-family: Arial, sans-serif;
+   font-family: Impact, 'Arial Black', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  
+  /* 3D effect with multiple text shadows */
+  color: #FFD700;
+  text-shadow: 
+    3px 3px 0 #FF4500,
+    3px 3px 0 #DC143C,
+  3px 3px 0 #8B0000,
+    12px 12px 20px rgba(0, 0, 0, 0.5);
     height: 120vh;
     margin: 0;
+    
+}
+
+html, * {
+  cursor: url('cursor.png.png'), auto !important;
 }
 
 
 #form {
     background: linear-gradient($primary-color, #293f6e);
-
+  
 }
 
 html {
@@ -31,7 +50,7 @@ input[type="radio"] {
   margin-right: 10px;
 }
 .btn-primary {
-  background: linear-gradient(145deg, $primary-color, #000102);
+  background: linear-gradient(145deg, $primary-color, #042e58);
   border: none;
   border-radius: 20px;
   padding: 20px;
