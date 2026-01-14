@@ -46,7 +46,6 @@ body {
 
 #form {
   background: linear-gradient(#0f1a22, #000000);
-  border-left: 5px solid #ff8c1a !important;
   border-radius: 2rem !important;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.1);
   padding: 2rem !important;
