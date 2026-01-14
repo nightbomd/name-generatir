@@ -1,5 +1,4 @@
 
-
 function generateName(name, superhero, braveryLevel, colorInput, personality) {
     let generatedName = {
         prefix: braveryLevel,
@@ -96,11 +95,11 @@ function displayName() {
                 duration: 500,
                 easing: 'easeOutExpo'
             });
-        
+        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // smooth scroll to result
-    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+       
+        // smooth scroll to result
+    }
 }
 
 

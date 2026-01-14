@@ -181,3 +181,10 @@ label {
   display: none;
   box-shadow: 0 0 15px rgba(red($div-accent), green($div-accent), blue($div-accent), 0.8);
 }
+#result h3 {
+  cursor: grab;
+  position: absolute;
+}
+#result h3:active {
+  cursor: grabbing;
+}
