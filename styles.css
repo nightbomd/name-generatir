@@ -1,28 +1,65 @@
-body {
-  background: radial-gradient(circle at 50% 50%, #0a0a0f, #163442);
-  color: #00D9FF;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1.5rem;
-  /* 3D effect with multiple text shadows */
-  color: #FFD700;
-  text-shadow: 3px 3px 0 #FF4500, 3px 3px 0 #DC143C, 3px 3px 0 #8B0000, 12px 12px 20px rgba(0, 0, 0, 0.5);
-  height: 120vh;
-  margin: 0;
+.btn:hover, .form-control:hover, .form-select:hover {
+  border-color: #0e57a0 !important;
 }
 
-html, * {
-  cursor: url("cursor.png.png"), auto !important;
+body {
+  background: linear-gradient(120deg, #0f0f0f, #1a1a1a, #2a2a2a, #111);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 20s infinite alternate;
+  font-family: "Digital-7 Mono", monospace;
+  color: #ffce47;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 1.5rem;
+  /* 3D effect with multiple text shadows */
+  color: #ffce47;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 10%;
+}
+
+.form-control {
+  background: radial-gradient(circle at 50% 50%, #07090d, #020303);
+  border: 2px solid #ff8c1a !important;
+  color: white !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+.form-control:hover {
+  border: 2px solid #0e57a0 !important;
+}
+.form-control:hover .form-control {
+  background: radial-gradient(circle at 50% 50%, #07090d, #020303);
+  border: 2px solid #ff8c1a;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.form-control:hover .form-control:hover {
+  border-color: #0e57a0;
+}
+.form-control:hover .form-control:focus, .form-control:hover .form-control:active {
+  border-color: #0e57a0;
+  outline: 2px solid #0e57a0;
 }
 
 #form {
-  background: linear-gradient(#0066CC, #293f6e);
+  background: linear-gradient(#0f1a22, #000000);
+  border-left: 10px solid #ff8c1a !important;
+  border-radius: 2rem !important;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.1);
+  padding: 2rem !important;
 }
 
 html {
   font-size: 1.1rem !important;
+}
+
+input[type=range] {
+  height: 6px;
+  background: linear-gradient(90deg, #111, #333);
+  border-radius: 10px;
 }
 
 input[type=radio] {
@@ -33,19 +70,58 @@ input[type=radio] {
   margin-right: 10px;
 }
 
+.form-select {
+  background: radial-gradient(circle at 50% 50%, #07090d, #020303);
+  border: 2px solid #ff8c1a !important;
+  color: #ffce47 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+select option {
+  background: #07090d !important;
+  color: #ffce47 !important;
+  font-weight: 600 !important;
+}
+
+input::-moz-placeholder {
+  color: #ffce47 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+input::placeholder {
+  color: #ffce47 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+label {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+label:hover {
+  color: #0e57a0;
+}
+
 .btn-primary {
-  background: linear-gradient(145deg, #0066CC, #042e58);
+  background: linear-gradient(145deg, #0f1a22, #140c05);
   border: none;
   border-radius: 20px;
   padding: 20px;
   font-size: 1rem;
+  color: #ffce47;
   cursor: pointer;
+  border: 2px solid #ff8c1a;
+  border-radius: 25px;
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25), -6px -6px 12px rgba(255, 255, 255, 0.15);
   transition: 0.2s ease;
+  font-size: 2rem;
 }
 
 .btn-primary:hover {
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+  color: #ffce47;
 }
 
 @media screen and (max-width: 800px) {
@@ -54,9 +130,20 @@ input[type=radio] {
     flex-direction: column !important;
   }
 }
-#result {
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#result, fieldset {
   margin-top: 2rem;
-  padding: 1.5rem;
+  padding: 3rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   font-size: 1.5rem;

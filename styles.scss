@@ -1,46 +1,95 @@
-$background-color: #0a0a0f; // Almost black background
-$font-color: #00D9FF; // Bright cyan for text (electric, modern hero)
-$primary-color: #0066CC; // Bold blue for primary elements
+$background-color: #07090d; // Deep space black (not pure black, easier on eyes)
 
-$div-background: #1c1c28; // Dark gray-blue for divs
-$div-accent: #003D82; // Deep blue for hover/secondary divs
-$border-color: #00D9FF; // Cyan borders to match text
+$font-color: #ffce47; // Soft sci-fi orange (readable, not neon blinding)
 
+$primary-color: #0f1a22; // Dark steel-blue for main elements (very sci-fi panel)
+$hover-color: #0e57a0; // Accent blue for hover effects
+$div-background: #e09807; // Dark gunmetal for cards/divs
 
+$div-accent: #1f2a36; // Subtle hover / secondary panels
+
+$border-color: #ff8c1a; // Strong orange border = futuristic HUD lines
+
+.btn:hover, .form-control:hover, .form-select:hover {
+  border-color: $hover-color !important;
+ 
+}
 
 body {
-    background: radial-gradient(circle at 50% 50%, $background-color, #163442);
-    color: $font-color;
-   font-family: Impact, 'Arial Black', sans-serif;
+  background: linear-gradient(120deg,
+      #0f0f0f,
+      #1a1a1a,
+      #2a2a2a,
+      #111);
+  background-size: 400% 400%;
+
+  animation: backgroundAnimation 20s infinite alternate;
+  font-family: 'Digital-7 Mono', monospace;
+  color: $font-color;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   font-size: 1.5rem;
-  
+
   /* 3D effect with multiple text shadows */
-  color: #FFD700;
-  text-shadow: 
-    3px 3px 0 #FF4500,
-    3px 3px 0 #DC143C,
-  3px 3px 0 #8B0000,
-    12px 12px 20px rgba(0, 0, 0, 0.5);
-    height: 120vh;
-    margin: 0;
-    
+  color: $font-color;
+
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 10%;
+
 }
 
-html, * {
-  cursor: url('cursor.png.png'), auto !important;
+.form-control {
+  background: radial-gradient(circle at 50% 50%, $background-color, #020303);
+  border: 2px solid $border-color !important;
+  color: white !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+
+  &:hover {
+    border: 2px solid $hover-color !important;
+
+ .form-control {
+  background: radial-gradient(circle at 50% 50%, $background-color, #020303);
+  border: 2px solid $border-color;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+
+  &:hover {
+    border-color: $hover-color;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $hover-color;
+    outline: 2px solid $hover-color;
+  }
 }
+}
+}
+
+
 
 
 #form {
-    background: linear-gradient($primary-color, #293f6e);
-  
+  background: linear-gradient($primary-color, #000000);
+  border-left: 10px solid $border-color !important;
+  border-radius: 2rem !important;
+  box-shadow :
+    8px 8px 16px rgba(0, 0, 0, 0.3),
+    -8px -8px 16px rgba(255, 255, 255, 0.1);
+    padding: 2rem !important;
 }
 
 html {
-    font-size: 1.1rem !important;
+  font-size: 1.1rem !important;
+}
+input[type="range"] {
+  height: 6px;
+  background: linear-gradient(90deg, #111, #333);
+  border-radius: 10px;
 }
 input[type="radio"] {
   width: 20px;
@@ -48,38 +97,88 @@ input[type="radio"] {
   cursor: pointer;
   border-radius: 45%;
   margin-right: 10px;
+
 }
+.form-select {
+  background: radial-gradient(circle at 50% 50%, $background-color, #020303);
+  border: 2px solid $border-color !important;
+  color: $font-color !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+select option {
+  background: $background-color !important;
+  color: $font-color !important;
+  font-weight: 600 !important;
+}
+
+input::placeholder {
+  color: $font-color !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+label {
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $hover-color
+  }
+}
+
 .btn-primary {
-  background: linear-gradient(145deg, $primary-color, #042e58);
+  background: linear-gradient(145deg, $primary-color, #140c05);
   border: none;
   border-radius: 20px;
   padding: 20px;
   font-size: 1rem;
+  color: $font-color;
   cursor: pointer;
+  border: 2px solid $border-color;
+  border-radius: 25px;
   box-shadow:
     6px 6px 12px rgba(0, 0, 0, 0.25),
     -6px -6px 12px rgba(255, 255, 255, 0.15);
   transition: 0.2s ease;
+  font-size: 2rem;
 }
 
 .btn-primary:hover {
   box-shadow:
     inset 4px 4px 8px rgba(0, 0, 0, 0.3),
     inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+    color: $font-color;
 }
 
 @media screen and (max-width: 800px) {
-    div {
-        display: flex !important;
-        flex-direction: column !important;
-    }
+  div {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }
-#result {
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#result, fieldset {
   margin-top: 2rem;
-  padding: 1.5rem;
+  padding: 3rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   font-size: 1.5rem;
   text-align: center;
   display: none;
+
 }
