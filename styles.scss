@@ -16,14 +16,7 @@ $border-color: #ff8c1a; // Strong orange border = futuristic HUD lines
 }
 
 body {
-  background: linear-gradient(120deg,
-      #0f0f0f,
-      #1a1a1a,
-      #2a2a2a,
-      #111);
-  background-size: 400% 400%;
-
-  animation: backgroundAnimation 20s infinite alternate;
+  background: black;
   font-family: 'Digital-7 Mono', monospace;
   color: $font-color;
   font-weight: 900;
@@ -73,14 +66,7 @@ body {
 
 
 
-#form {
-  background: linear-gradient($primary-color, #000000);
-  border-radius: 2rem !important;
-  box-shadow :
-    8px 8px 16px rgba(0, 0, 0, 0.3),
-    -8px -8px 16px rgba(255, 255, 255, 0.1);
-    padding: 1.8rem !important; 
-}
+
 
 html {
   font-size: 1.1rem !important;
@@ -157,19 +143,7 @@ label {
   }
 }
 
-@keyframes backgroundAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
 
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 #result, fieldset {
   margin-top: 2rem;
@@ -180,11 +154,4 @@ label {
   text-align: center;
   display: none;
   box-shadow: 0 0 15px rgba(red($div-accent), green($div-accent), blue($div-accent), 0.8);
-}
-#result h3 {
-  cursor: grab;
-  position: absolute;
-}
-#result h3:active {
-  cursor: grabbing;
 }

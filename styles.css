@@ -3,9 +3,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, #0f0f0f, #1a1a1a, #2a2a2a, #111);
-  background-size: 400% 400%;
-  animation: backgroundAnimation 20s infinite alternate;
+  background: black;
   font-family: "Digital-7 Mono", monospace;
   color: #ffce47;
   font-weight: 900;
@@ -42,13 +40,6 @@ body {
 .form-control:hover .form-control:focus, .form-control:hover .form-control:active {
   border-color: #0e57a0;
   outline: 2px solid #0e57a0;
-}
-
-#form {
-  background: linear-gradient(#0f1a22, #000000);
-  border-radius: 2rem !important;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.1);
-  padding: 1.8rem !important;
 }
 
 html {
@@ -127,17 +118,6 @@ label:hover {
   div {
     display: flex !important;
     flex-direction: column !important;
-  }
-}
-@keyframes backgroundAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 #result, fieldset {

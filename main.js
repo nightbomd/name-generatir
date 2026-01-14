@@ -1,4 +1,31 @@
 
+import anime from 'https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.es.js'; // ✅
+const title = document.querySelector('.title');
+
+
+
+const text = title.textContent;
+title.innerHTML = text.split('').map(char => 
+  `<span class="char">${char === ' ' ? '&nbsp;' : char}</span>`
+).join('');
+
+anime({
+  targets: '.char', // Target the individual character spans
+  translateY: [
+    { value: -44, duration: 600, easing: 'easeOutExpo' },
+    { value: 0, duration: 800, delay: 100, easing: 'easeOutBounce' }
+  ],
+  rotate: {
+    value: '-1turn',
+    duration: 600,
+    easing: 'easeOutExpo'
+  },
+  opacity: [0, 1],
+  delay: anime.stagger(50), // Use anime.stagger
+  loop: true,
+  loopDelay: 1000
+});
+
 function generateName(name, superhero, braveryLevel, colorInput, personality) {
     let generatedName = {
         prefix: braveryLevel,
@@ -70,7 +97,7 @@ function displayName() {
     if (name) {
         let result = document.getElementById('result');
         result.style.display = 'block';
-        result.innerHTML = `<div class="p-3 text-center"><span class="fw-bold fs-4 mb-5">Your Superhero Name is:</span> <h3>${name}</h3></div>`;
+        result.innerHTML = `<div class="p-3 text-center"><span class="fw-bold fs-4 mb-5">Your Superhero Name is:</span> <h3 class="text-center">${name}</h3></div>`;
 
         anime.timeline()
             .add({
