@@ -46,7 +46,7 @@ body {
 
 #form {
   background: linear-gradient(#0f1a22, #000000);
-  border-left: 10px solid #ff8c1a !important;
+  border-left: 5px solid #ff8c1a !important;
   border-radius: 2rem !important;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.1);
   padding: 2rem !important;
@@ -144,9 +144,10 @@ label:hover {
 #result, fieldset {
   margin-top: 2rem;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(224, 152, 7, 0.15);
   border-radius: 8px;
   font-size: 1.5rem;
   text-align: center;
   display: none;
+  box-shadow: 0 0 15px rgba(31, 42, 54, 0.8);
 }/*# sourceMappingURL=styles.css.map */
