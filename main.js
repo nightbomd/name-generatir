@@ -26,7 +26,7 @@ spaceCanvas.width = window.innerWidth;
 spaceCanvas.height = window.innerHeight;
 
 let stars = []
-for (let i = 0; i < 400; i++) {
+for (let i = 0; i < 500; i++) {
     stars.push({
         x: Math.random() * spaceCanvas.width,
         y: Math.random() * spaceCanvas.height,
@@ -83,6 +83,12 @@ function animate() {
             const force = ((maxDistance - distance) / maxDistance) * 2;
             const radialX = dx / distance;
             const radialY = dy / distance;
+
+            const perpX = -radialY;
+            const perpY = radialX;
+
+            star.vx += perpX * force * 0.3;
+            star.vy += perpY * force * 0.3;
 
             star.vx += radialX * force;
             star.vy += radialY * force;
