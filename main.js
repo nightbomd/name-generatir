@@ -4,6 +4,18 @@ const title = document.querySelector('.title');
 const spaceCanvas = document.getElementById('space');
 const ctx = spaceCanvas.getContext('2d');
 
+function resizeCanvas() {
+    spaceCanvas.width = window.innerWidth;
+    spaceCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', () => {
+    resizeCanvas();
+     stars.forEach(star => {
+        if(star.x > spaceCanvas.width) star.x = Math.random() * spaceCanvas.width;
+        if(star.y > spaceCanvas.height) star.y = Math.random() * spaceCanvas.height;
+    });
+});
+
 const mouse = { x: 0, y: 0 };
 window.addEventListener('mousemove', function (e) {
     mouse.x = e.clientX;
@@ -20,6 +32,8 @@ for (let i = 0; i < 400; i++) {
         y: Math.random() * spaceCanvas.height,
         radius: Math.random() * 4 + 3,
         speed: Math.random() * 1 + 0.5,
+        vx: 0,
+        vy: 0
     })
 }
 
@@ -47,37 +61,50 @@ function animate() {
         const dy = mouse.y - star.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 150) {
-            star.x -= dx / (distance * 6) * Math.sin(star.y * 180);
-            star.y -= dy / distance * 6;
-            
+        const maxDistance = Math.min(spaceCanvas.width, spaceCanvas.height) / 3;
+
+        if (distance < maxDistance && distance !== 0) {
+            const force = ((maxDistance - distance) / maxDistance) * 2;
+
+            const radialX = dx / distance;
+            const radialY = dy / distance;
+
+            star.vx += radialX * force;
+            star.vy += radialY * force;
         }
 
+        star.x += star.vx; // motion 
+        star.y += star.vy;
+
+        star.vx *= 0.98; // friction 
+        star.vy *= 0.98;
+    
+
         if (star.y > spaceCanvas.height) star.y = 0;
-        if (star.x > spaceCanvas.width) star.x = 0;
-        if (star.x < 0) star.x = spaceCanvas.width;
+    if (star.x > spaceCanvas.width) star.x = 0;
+    if (star.x < 0) star.x = spaceCanvas.width;
 
 
 
-        ctx.fillStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-        ctx.beginPath();
-        ctx.moveTo(
-            lastPos.x + Math.sin(Date.now() * 0.01) * 4, 
-            lastPos.y + Math.cos(Date.now() * 0.01) * 4 
-        );
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-        ctx.shadowColor = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-        ctx.lineWidth = 15;
-        ctx.shadowBlur = 30;
-        ctx.stroke();
+    ctx.fillStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.beginPath();
+    ctx.moveTo(
+        lastPos.x + Math.sin(Date.now() * 0.01) * 4,
+        lastPos.y + Math.cos(Date.now() * 0.01) * 4
+    );
+    ctx.lineTo(mouse.x, mouse.y);
+    ctx.strokeStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.shadowColor = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.lineWidth = 15;
+    ctx.shadowBlur = 30;
+    ctx.stroke();
 
-        lastPos.x = mouse.x;
-        lastPos.y = mouse.y;
-        ctx.fillRect(star.x, star.y, star.radius, star.radius);
-    });
+    lastPos.x = mouse.x;
+    lastPos.y = mouse.y;
+    ctx.fillRect(star.x, star.y, star.radius, star.radius);
+});
 
-    requestAnimationFrame(animate);
+requestAnimationFrame(animate);
 }
 
 const text = title.textContent;
