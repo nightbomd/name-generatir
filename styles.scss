@@ -166,7 +166,13 @@ label {
 border: 6px solid #ff0000;
 }
 
-
+.bravery-num-list {
+  
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: $font-color;
+ 
+}
 #result, fieldset {
   margin-top: 2rem;
   padding: 3rem;
