@@ -14,7 +14,7 @@ spaceCanvas.width = window.innerWidth;
 spaceCanvas.height = window.innerHeight;
 
 let stars = []
-for (let i = 0; i < 300; i++) {
+for (let i = 0; i < 400; i++) {
     stars.push({
         x: Math.random() * spaceCanvas.width,
         y: Math.random() * spaceCanvas.height,
@@ -48,8 +48,9 @@ function animate() {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < 150) {
-            star.x -= dx / distance * 6;
+            star.x -= dx / (distance * 6) * Math.sin(star.y * 180);
             star.y -= dy / distance * 6;
+            
         }
 
         if (star.y > spaceCanvas.height) star.y = 0;
