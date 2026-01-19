@@ -10,9 +10,9 @@ function resizeCanvas() {
 }
 window.addEventListener('resize', () => {
     resizeCanvas();
-     stars.forEach(star => {
-        if(star.x > spaceCanvas.width) star.x = Math.random() * spaceCanvas.width;
-        if(star.y > spaceCanvas.height) star.y = Math.random() * spaceCanvas.height;
+    stars.forEach(star => {
+        if (star.x > spaceCanvas.width) star.x = Math.random() * spaceCanvas.width;
+        if (star.y > spaceCanvas.height) star.y = Math.random() * spaceCanvas.height;
     });
 });
 
@@ -53,7 +53,23 @@ const lastPos = { x: mouse.x, y: mouse.y };
 function animate() {
     ctx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
 
+    // Draw mouse trail
+    ctx.fillStyle = `hsl(${(mouse.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.beginPath();
+   
+    ctx.arc(mouse.x, mouse.y, 20, 0, Math.PI * 2); // Add circle to the same path
+    ctx.strokeStyle = `hsl(${(mouse.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.shadowColor = `hsl(${(mouse.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+    ctx.lineWidth = 15;
+    ctx.shadowBlur = 30;
+    ctx.stroke();
+    ctx.fill(); // Fill the circle
+    lastPos.x = mouse.x;;
+    lastPos.y = mouse.y;
+
+    // Update and draw each star
     stars.forEach(star => {
+        // Update position
         star.y += star.speed;
         star.x += star.speed * Math.sin(star.y * 0.005);
 
@@ -65,7 +81,6 @@ function animate() {
 
         if (distance < maxDistance && distance !== 0) {
             const force = ((maxDistance - distance) / maxDistance) * 2;
-
             const radialX = dx / distance;
             const radialY = dy / distance;
 
@@ -73,40 +88,26 @@ function animate() {
             star.vy += radialY * force;
         }
 
-        star.x += star.vx; // motion 
+        star.x += star.vx;
         star.y += star.vy;
 
-        star.vx *= 0.98; // friction 
+        star.vx *= 0.98;
         star.vy *= 0.98;
-    
 
         if (star.y > spaceCanvas.height) star.y = 0;
-    if (star.x > spaceCanvas.width) star.x = 0;
-    if (star.x < 0) star.x = spaceCanvas.width;
+        if (star.x > spaceCanvas.width) star.x = 0;
+        if (star.x < 0) star.x = spaceCanvas.width;
 
+        // Draw the star
+        ctx.fillStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+        ctx.shadowColor = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
+        ctx.shadowBlur = star.radius * 2;
 
+        ctx.fillRect(star.x, star.y, star.radius, star.radius);
+    });
 
-    ctx.fillStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-    ctx.beginPath();
-    ctx.moveTo(
-        lastPos.x + Math.sin(Date.now() * 0.01) * 4,
-        lastPos.y + Math.cos(Date.now() * 0.01) * 4
-    );
-    ctx.lineTo(mouse.x, mouse.y);
-    ctx.strokeStyle = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-    ctx.shadowColor = `hsl(${(star.y / spaceCanvas.height) * 360}, 100%, 50%)`;
-    ctx.lineWidth = 15;
-    ctx.shadowBlur = 30;
-    ctx.stroke();
-
-    lastPos.x = mouse.x;
-    lastPos.y = mouse.y;
-    ctx.fillRect(star.x, star.y, star.radius, star.radius);
-});
-
-requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 }
-
 const text = title.textContent;
 title.innerHTML = text.split('').map(char =>
     `<span class="char">${char === ' ' ? '&nbsp;' : char}</span>`
