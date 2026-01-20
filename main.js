@@ -8,6 +8,7 @@ function resizeCanvas() {
     spaceCanvas.width = window.innerWidth;
     spaceCanvas.height = window.innerHeight;
 }
+// resize canvas to update mouse position and star positions
 window.addEventListener('resize', () => {
     resizeCanvas();
     stars.forEach(star => {
@@ -16,6 +17,7 @@ window.addEventListener('resize', () => {
     });
 });
 
+// track mouse position
 const mouse = { x: 0, y: 0 };
 window.addEventListener('mousemove', function (e) {
     mouse.x = e.clientX;
@@ -26,6 +28,7 @@ spaceCanvas.width = window.innerWidth;
 spaceCanvas.height = window.innerHeight;
 
 let stars = []
+// create 500 stars with random positions and sizes
 for (let i = 0; i < 500; i++) {
     stars.push({
         x: Math.random() * spaceCanvas.width,
@@ -39,7 +42,7 @@ for (let i = 0; i < 500; i++) {
 
 function drawStars() {
     ctx.clearRect(0, 0, spaceCanvas.width, spaceCanvas.height);
-
+    // Draw each star
     stars.forEach(star => {
         ctx.shadowColor = "white";
         ctx.shadowBlur = star.radius * 2;
@@ -81,9 +84,11 @@ function animate() {
 
         if (distance < maxDistance && distance !== 0) {
             const force = ((maxDistance - distance) / maxDistance) * 2;
+            // reused distance calculation for circular motion
             const radialX = dx / distance;
             const radialY = dy / distance;
-
+            
+            // Perpendicular vector for circular motion
             const perpX = -radialY;
             const perpY = radialX;
 
@@ -93,10 +98,11 @@ function animate() {
             star.vx += radialX * force;
             star.vy += radialY * force;
         }
-
+        //motion 
         star.x += star.vx;
         star.y += star.vy;
 
+        // friction 
         star.vx *= 0.98;
         star.vy *= 0.98;
 
@@ -182,12 +188,15 @@ function generateName(name, superhero, braveryLevel, colorInput, personality) {
         generatedName.last = "Neutral Party";
     }
     const color = tinycolor(generatedName.suffix).toRgb();
+    // predominatley red
     if (color.r >= color.g && color.r >= color.b) {
         generatedName.suffix = "of Flames";
     }
+    // predominatley green
     else if (color.r <= color.g && color.g >= color.b) {
         generatedName.suffix = "of the Forest";
     }
+    // base
     else {
         generatedName.suffix = "of the Ocean";
     }
